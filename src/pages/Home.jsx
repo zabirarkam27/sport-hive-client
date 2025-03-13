@@ -3,7 +3,7 @@ const Home = () => {
     return (
       <>
         <Helmet>Home || SportHive</Helmet>
-        <div className="min-h-[calc(100vh-271px)] bg-gray-100">
+        <div className="min-h-[calc(100vh-271px)] ">
         </div>
       </>
     );

@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import AddEquipments from "../pages/AddEquipments";
+import UpdateEquipments from "../pages/UpdateEquipments";
 
 const routes = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const routes = createBrowserRouter([
         path: "/add-equipments",
         element: <AddEquipments />,
       },
+      {
+        path: "/update-equipments",
+        element: <UpdateEquipments />,
+      },
+
     ],
   },
 ]);
