@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../public/logo.png"
-import ThemeChanger from "./ThemeChanger";
+import ThemeChanger from "./ThemeChanger"; 
 
 const Navbar = () => {
   const links = (
@@ -10,7 +10,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/products"}></NavLink>
+        <NavLink to={"/add-equipments"}>Add Equipments</NavLink>
       </li>
       <li>
         <NavLink to=""></NavLink>
@@ -18,7 +18,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm mx-auto container w-full max-w-screen-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,15 +45,15 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-              <Link to={"/"} className="btn btn-ghost">
-              <img src={logo} alt="logo" className="w-24 md:w-28" />
-              </Link>
+        <Link to={"/"} className="btn btn-ghost">
+          <img src={logo} alt="logo" className="w-24 md:w-28" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <ThemeChanger/>
+        <ThemeChanger />
         <a className="btn">Button</a>
       </div>
     </div>
