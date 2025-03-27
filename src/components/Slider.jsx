@@ -1,9 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import SliderContent1 from "./SliderContent1";
+import SliderContent2 from "./SliderContent2";
+import SliderContent3 from "./SliderContent3";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import SliderContent1 from "./SliderContent1";
 
 const Slider = () => {
     return (
@@ -19,7 +21,13 @@ const Slider = () => {
           effect="slide"
         >
           <SwiperSlide>
-            <SliderContent1 className="flex justify-center items-center" />
+            <SliderContent1/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <SliderContent2/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <SliderContent3/>
           </SwiperSlide>
         </Swiper>
       </div>
