@@ -4,6 +4,7 @@ import Error from "../pages/Error";
 import Home from "../pages/Home";
 import AddEquipments from "../pages/AddEquipments";
 import UpdateEquipments from "../pages/UpdateEquipments";
+import MyEquipmentList from "../pages/MyEquipmentList";
 
 const routes = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const routes = createBrowserRouter([
       {
         path: "/update-equipments",
         element: <UpdateEquipments />,
+      },
+      {
+        path: "/my-equipment-list",
+        element: <MyEquipmentList />,
       },
     ],
   },
