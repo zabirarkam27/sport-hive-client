@@ -22,8 +22,9 @@ const routes = createBrowserRouter([
         element: <AddEquipments />,
       },
       {
-        path: "/update-equipments",
+        path: "/update-equipments/:id",
         element: <UpdateEquipments />,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`).then((res)=>res.json()),
       },
       {
         path: "/my-equipment-list",
