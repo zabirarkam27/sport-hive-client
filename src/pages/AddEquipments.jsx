@@ -40,8 +40,6 @@ const AddEquipments = () => {
       description,
     };
 
-    console.log(newProduct);
-
     fetch("http://localhost:5000/products", {
       method: "POST",
       headers: {
@@ -51,8 +49,10 @@ const AddEquipments = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.insertedID) {
+        if (data.insertedID || data.insertedId) {
+          form.reset();
+          setRating(0);
+          setProcessingTime("");
           Swal.fire({
             title: "Success!",
             text: "Product Added Successfully",

@@ -8,6 +8,7 @@ import MyEquipmentList from "../pages/MyEquipmentList";
 import Login from "../pages/Login";
 import Register from './../pages/Register';
 import PrivateRoutes from "./PrivateRoutes";
+import AllSportsEquipment from "../pages/AllSportsEquipment";
 
 const routes = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Home />,
         loader: () => fetch("http://localhost:5000/products"),
+      },
+      {
+        path: "/all-sports-equipment",
+        element: <AllSportsEquipment />,
       },
       {
         path: "/add-equipments",

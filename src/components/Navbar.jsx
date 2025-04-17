@@ -1,28 +1,30 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../../public/logo.png"
-import ThemeChanger from "./ThemeChanger"; 
+import logo from "../../public/logo.png";
+import ThemeChanger from "./ThemeChanger";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-const { user, logOut } = useContext(AuthContext);
-const navigate = useNavigate();
-
-const handleLogOut = () => {
-  logOut()
-    .then(() => {
-      navigate("/");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const links = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/all-sports-equipment">All Sports Equipment</NavLink>
       </li>
       {user && (
         <>
@@ -37,7 +39,7 @@ const handleLogOut = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm mx-auto container w-full max-w-screen-xl">
+    <div className="navbar bg-base-100 shadow-sm w-full px-1 md:px-0 md:mx-auto md:container md:max-w-screen-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,6 +63,7 @@ const handleLogOut = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
+            <ThemeChanger className="block lg:hidden" />
           </ul>
         </div>
         <Link to={"/"} className="btn btn-ghost">
@@ -70,8 +73,10 @@ const handleLogOut = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end gap-6">
-        <ThemeChanger />
+      <div className="navbar-end gap-1 md:gap-3">
+        <div className="hidden lg:block">
+          <ThemeChanger />
+        </div>
         {user && user?.email ? (
           <div className="dropdown">
             <div
@@ -101,9 +106,14 @@ const handleLogOut = () => {
             </ul>
           </div>
         ) : (
-          <Link to={"/login"} className="btn rounded-xl">
-            Login
-          </Link>
+          <>
+            <Link to={"/login"} className="btn btn-xs rounded-xl">
+              Login
+            </Link>
+            <Link to={"/register"} className="btn btn-xs rounded-xl">
+              Register
+            </Link>
+          </>
         )}
       </div>
     </div>

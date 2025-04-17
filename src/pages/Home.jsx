@@ -4,7 +4,7 @@ import Products from '../components/Products';
 const Home = () => {
 
       return (
-        <div className="mx-auto container w-full max-w-screen-xl">
+        <div className="md:mx-auto md:container w-full px-1 md:px-0 md:max-w-screen-xl">
           <Helmet>Home || SportHive</Helmet>
           <Slider />
           <Products />

@@ -128,6 +128,7 @@ const UpdateEquipments = () => {
                 name="authorName"
                 defaultValue={authorName}
                 className="input w-[280px]"
+                readOnly
               />
             </fieldset>
             <fieldset className="fieldset">
@@ -137,6 +138,7 @@ const UpdateEquipments = () => {
                 name="email"
                 defaultValue={email}
                 className="input w-[280px]"
+                readOnly
               />
             </fieldset>
             <div>

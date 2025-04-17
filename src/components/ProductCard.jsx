@@ -3,7 +3,6 @@
 const ProductCard = ({ product }) => {
     
   const {
-      _id,
       name,
       photo,
       category,
@@ -13,7 +12,7 @@ const ProductCard = ({ product }) => {
     } = product;
     
     return (
-      <div className="card bg-base-100 w-96 shadow-sm px-4">
+      <div className="card bg-base-100 w-full max-w-sm mx-auto shadow-sm px-4">
         <figure className="relative">
           <img src={photo} alt={name} />
           <div className="badge badge-neutral text-lg p-3 font-bold absolute top-4 right-4">
