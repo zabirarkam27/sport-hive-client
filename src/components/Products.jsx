@@ -1,6 +1,7 @@
 
 import { useLoaderData } from 'react-router-dom';
 import ProductCard from './ProductCard';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
 
@@ -14,6 +15,12 @@ const Products = () => {
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
+        <Link
+          className="mt-5 btn btn-sm bg-blue-500 text-white"
+          to={"/all-sports-equipment"}
+        >
+          View All Products
+        </Link>
       </div>
     );
 };
