@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const AllSportsEquipment = () => {
@@ -45,7 +44,7 @@ const AllSportsEquipment = () => {
               <td>{equipment.stock}</td>
               <td>
                 <Link
-                  // to={`/equipment-details/${equipment._id}`}
+                  to={`/products/${equipment._id}`}
                   className="btn btn-sm bg-blue-400 text-white"
                 >
                   View

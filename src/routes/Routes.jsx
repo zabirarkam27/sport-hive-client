@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Register from './../pages/Register';
 import PrivateRoutes from "./PrivateRoutes";
 import AllSportsEquipment from "../pages/AllSportsEquipment";
+import ViewDetails from "../pages/ViewDetails";
 
 const routes = createBrowserRouter([
   {
@@ -24,6 +25,16 @@ const routes = createBrowserRouter([
       {
         path: "/all-sports-equipment",
         element: <AllSportsEquipment />,
+      },
+      {
+        path: "/products/:id",
+        element: (
+          <PrivateRoutes>
+            <ViewDetails />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/add-equipments",

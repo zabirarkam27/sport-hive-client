@@ -49,9 +49,7 @@ const ProductCard = ({ product }) => {
             </div>
             <div className="badge badge-outline">{category}</div>
           </div>
-          <Link
-            // to={`/equipment-details/${product._id}`}
-          >
+          <Link to={`/products/${product._id}`}>
             <button className="btn btn-sm rounded-full mt-2 bg-blue-500 text-white">
               View Details
             </button>
