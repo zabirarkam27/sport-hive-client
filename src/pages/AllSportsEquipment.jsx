@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const AllSportsEquipment = () => {
   const [equipments, setEquipments] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
@@ -10,11 +11,27 @@ const AllSportsEquipment = () => {
       .then((data) => setEquipments(data));
   }, []);
 
+  const sortedEquipments = [...equipments].sort((a, b) => {
+    return sortOrder === "asc"
+      ? a.price - b.price
+      : b.price - a.price;
+  });
+
+  const toggleSortOrder = () => {
+    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+  }
+
   return (
     <div className="overflow-x-auto mx-auto container w-full max-w-screen-xl">
       <h2 className="text-3xl mt-3 font-bold mb-6 text-center">
         All Sports Equipment
       </h2>
+      <button
+        onClick={toggleSortOrder}
+        className="btn btn-sm bg-blue-400 mb-3 text-white "
+      >
+        Sort by Price: {sortOrder === "asc" ? "Low to High" : "High to Low"}
+      </button>
       <table className="table w-full">
         <thead>
           <tr className="bg-base-200 text-base font-semibold text-gray-700">
@@ -28,7 +45,7 @@ const AllSportsEquipment = () => {
           </tr>
         </thead>
         <tbody>
-          {equipments.map((equipment, index) => (
+          {sortedEquipments.map((equipment, index) => (
             <tr key={equipment._id} className="hover">
               <td>{index + 1}</td>
               <td>
