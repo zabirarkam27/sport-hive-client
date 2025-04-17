@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import AddEquipments from "../pages/AddEquipments";
 import UpdateEquipments from "../pages/UpdateEquipments";
 import MyEquipmentList from "../pages/MyEquipmentList";
+import Login from "../pages/Login";
+import Register from './../pages/Register';
 
 const routes = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const routes = createBrowserRouter([
       {
         path: "/my-equipment-list",
         element: <MyEquipmentList />,
+      },
+      {
+        path: "/login",
+        element:<Login/>
+      },
+      {
+        path: "/register",
+        element: <Register/>
       },
     ],
   },
