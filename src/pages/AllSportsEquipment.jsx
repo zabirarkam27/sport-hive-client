@@ -11,38 +11,11 @@ const AllSportsEquipment = () => {
       .then((data) => setEquipments(data));
   }, []);
 
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/products/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              setEquipments(
-                equipments.filter((equipment) => equipment._id !== id)
-              );
-              Swal.fire(
-                "Deleted!",
-                "Your equipment has been deleted successfully."
-              );
-            }
-          });
-      }
-    });
-  };
   return (
     <div className="overflow-x-auto mx-auto container w-full max-w-screen-xl">
-      <h2 className="text-3xl font-bold mb-6 text-center">My Equipment List</h2>
+      <h2 className="text-3xl mt-3 font-bold mb-6 text-center">
+        All Sports Equipment
+      </h2>
       <table className="table w-full">
         <thead>
           <tr className="bg-base-200 text-base font-semibold text-gray-700">
@@ -52,8 +25,7 @@ const AllSportsEquipment = () => {
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>View</th>
           </tr>
         </thead>
         <tbody>
@@ -73,27 +45,11 @@ const AllSportsEquipment = () => {
               <td>{equipment.stock}</td>
               <td>
                 <Link
-                  to={`/update-equipments/${equipment._id}`}
-                  className="btn btn-sm bg-[#87CEFA]"
+                  // to={`/equipment-details/${equipment._id}`}
+                  className="btn btn-sm bg-blue-400 text-white"
                 >
-                  <img
-                    className="w-5"
-                    src="https://img.icons8.com/?size=100&id=N9EgMvh1MGMk&format=png&color=000000"
-                    alt=""
-                  />
+                  View
                 </Link>
-              </td>
-              <td>
-                <button
-                  onClick={() => handleDelete(equipment._id)}
-                  className="btn btn-sm btn-error"
-                >
-                  <img
-                    className="w-5"
-                    src="https://img.icons8.com/?size=100&id=52620&format=png&color=000000"
-                    alt=""
-                  />
-                </button>
               </td>
             </tr>
           ))}

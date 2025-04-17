@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ProductCard = ({ product }) => {
@@ -48,6 +49,13 @@ const ProductCard = ({ product }) => {
             </div>
             <div className="badge badge-outline">{category}</div>
           </div>
+          <Link
+            // to={`/equipment-details/${product._id}`}
+          >
+            <button className="btn btn-sm rounded-full mt-2 bg-blue-500 text-white">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     );

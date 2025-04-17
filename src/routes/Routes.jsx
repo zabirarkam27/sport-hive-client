@@ -19,7 +19,7 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("http://localhost:5000/products?limit=6"),
       },
       {
         path: "/all-sports-equipment",
