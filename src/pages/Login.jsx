@@ -1,19 +1,20 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
-// import { AuthContext } from "./../provider/AuthProvider";
 import { toast } from "react-toastify";
-// import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../provider/AuthProvider";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
 
-  // const { login, setUser } = useContext(AuthContext);
+  const { login, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  // const auth = getAuth();
-  // const emailRef = useRef();
+  const auth = getAuth();
+  const emailRef = useRef();
 
   const from = location.state?.from?.pathname || "/";
 
@@ -65,6 +66,25 @@ const Login = () => {
       });
   };
 
+  // Login with google
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
+        toast.success("Successfully Logged in with Google!", {
+          position: "top-center",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("Login failed", { position: "top-center" }, error.message);
+      });
+  };
+
   return (
     <>
       <div className="hero bg-base-200 min-h-screen">
@@ -72,9 +92,8 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold text-center">Login now!</h1>
             <p className="py-6 text-center max-w-md">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Access your SportHive account to manage gear, track your list, and
+              stay in the game.
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -132,7 +151,7 @@ const Login = () => {
                 <div className="form-control mb-6">
                   <button
                     type="button"
-                    // onClick={handleGoogleLogin}
+                    onClick={handleGoogleLogin}
                     className="btn bg-slate-900 text-white w-full rounded-full"
                   >
                     <img

@@ -1,26 +1,39 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../public/logo.png"
 import ThemeChanger from "./ThemeChanger"; 
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+
+const { user, logOut } = useContext(AuthContext);
+const navigate = useNavigate();
+
+const handleLogOut = () => {
+  logOut()
+    .then(() => {
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
   const links = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to={"/add-equipments"}>Add Equipments</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/my-equipment-list"}>My Equipment List</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/login"}>Log In</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/register"}>Register</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/add-equipments"}>Add Equipments</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/my-equipment-list"}>My Equipment List</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -35,13 +48,12 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
@@ -58,9 +70,41 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-6">
         <ThemeChanger />
-        <a className="btn">Button</a>
+        {user && user?.email ? (
+          <div className="dropdown">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost rounded-full w-10 p-0"
+            >
+              <img
+                className="rounded-full w-8"
+                src={user?.photoURL}
+                title={user?.displayName}
+                alt={user?.displayName}
+              />
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 right-0 p-2 shadow"
+            >
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-sm btn-ghost w-full text-xs rounded p-0 m-0"
+                >
+                  Log Out
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to={"/login"} className="btn rounded-xl">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import UpdateEquipments from "../pages/UpdateEquipments";
 import MyEquipmentList from "../pages/MyEquipmentList";
 import Login from "../pages/Login";
 import Register from './../pages/Register';
+import PrivateRoutes from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
   {
@@ -21,24 +22,39 @@ const routes = createBrowserRouter([
       },
       {
         path: "/add-equipments",
-        element: <AddEquipments />,
+        element: (
+          <PrivateRoutes>
+            <AddEquipments />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/update-equipments/:id",
-        element: <UpdateEquipments />,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`).then((res)=>res.json()),
+        element: (
+          <PrivateRoutes>
+            <UpdateEquipments />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`).then((res) =>
+            res.json()
+          ),
       },
       {
         path: "/my-equipment-list",
-        element: <MyEquipmentList />,
+        element: (
+          <PrivateRoutes>
+            <MyEquipmentList />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
-        element:<Login/>
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <Register/>
+        element: <Register />,
       },
     ],
   },

@@ -1,13 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import { AuthContext } from '../provider/AuthProvider';
 
 
 
 const Register = () => {
-
   const [showPassword, setShowPassword] = useState(false);
+  const { createNewUser, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const auth = getAuth();
 
   // Register with email & password
   const handleSubmit = (e) => {
@@ -65,6 +75,24 @@ const Register = () => {
       });
   };
 
+  // Login with google
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
+        toast.success("Successfully Logged in with Google!", {
+          position: "top-center",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("Login failed", { position: "top-center" }, error.message);
+      });
+  };
 
   return (
     <>
@@ -145,7 +173,7 @@ const Register = () => {
                 <div className="form-control mb-6">
                   <button
                     type="button"
-                    // onClick={handleGoogleLogin}
+                    onClick={handleGoogleLogin}
                     className="btn bg-slate-900 text-white w-full rounded-full"
                   >
                     <img
