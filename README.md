@@ -1,12 +1,42 @@
-# React + Vite
+# 🏋️‍♂️ Sport Hive - Sports Equipment Management Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sport Hive একটি সহজ এবং ব্যবহার-বান্ধব ওয়েব অ্যাপ্লিকেশন, যেখানে ইউজাররা স্পোর্টস ইকুইপমেন্ট যুক্ত, আপডেট, ডিলিট এবং দেখার সুবিধা পায়। এটি React এবং Express.js দিয়ে তৈরি করা হয়েছে এবং ইউজার অথেনটিকেশন সিস্টেম সংযুক্ত রয়েছে।
 
-Currently, two official plugins are available:
+## 🔗 Live Link
+👉 [Live Site](http://localhost:5173/) (Development Mode)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 User Registration & Login (with validation)
+- 📦 Add, View, Update & Delete Equipment
+- 👤 My Equipment List (shows only logged-in user's items)
+- 🧭 Protected Routes
+- ✅ Success message after login/register
+- ❌ 404 Not Found page
+- 🎨 TailwindCSS & DaisyUI for beautiful UI
+
+---
+
+## 🔧 Tech Stack
+
+### Frontend
+- React
+- React Router
+- TailwindCSS
+- DaisyUI
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (optional depending on DB setup)
+
+---
+
+## 📁 Project Structure
+
+sport-hive/ │ ├── client/ # React frontend │ ├── src/ │ │ ├── components/ # Reusable UI components │ │ ├── pages/ # Page-level components (Home, MyEquipmentList, etc.) │ │ ├── routes/Routes.jsx # React Router setup │ │ ├── provider/AuthProvider.jsx │ │ └── App.jsx │ └── index.html │ ├── server/ # Express backend (if separated) │ ├── routes/products.js │ ├── controllers/ │ └── server.js │ └── README.md
+
+## 🧑‍💻 Author
+Zabir Arkam Akhond
