@@ -1,6 +1,6 @@
 # 🏋️‍♂️ Sport Hive - Sports Equipment Management Web Application
 
-Sport Hive একটি সহজ এবং ব্যবহার-বান্ধব ওয়েব অ্যাপ্লিকেশন, যেখানে ইউজাররা স্পোর্টস ইকুইপমেন্ট যুক্ত, আপডেট, ডিলিট এবং দেখার সুবিধা পায়। এটি React এবং Express.js দিয়ে তৈরি করা হয়েছে এবং ইউজার অথেনটিকেশন সিস্টেম সংযুক্ত রয়েছে।
+Sport Hive is a simple and user-friendly web application where users can add, update, delete, and view sports equipment. It is built using React and Express.js, and includes a user authentication system.
 
 ## 🔗 Live Link
 👉 [Live Site](http://localhost:5173/) (Development Mode)
